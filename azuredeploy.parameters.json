@@ -3,7 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "storagearmtest"
+            "value": "ubuntustorage"
+        },
+        "ipaddr": {
+            "value": "ubuntuVM1-PublicIP"
+        },
+        "dnlabel": {
+            "value": "[toLower('ubuntuVM1')]"
         }
     }
 }
