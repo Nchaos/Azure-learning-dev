@@ -25,6 +25,14 @@
             },
             "minLength": 3,
             "maxLength": 24
+        },
+        "address_space": {
+            "type": "string",
+            "metadata": {
+                "description": "Address space for the network"
+            },
+            "minLength": 3,
+            "maxLength": 24
         }
     },
     "functions": [],
@@ -38,8 +46,8 @@
             "displayName": "ubuntuVM1 Storage Account"
         },
         "sku": {
-            "name": "Premium_LRS",
-            "tier": "Premium"
+            "name": "Standard_LRS",
+            "tier": "Standard"
         },
         "kind": "StorageV2"
     },
@@ -96,7 +104,7 @@
         "properties": {
             "addressSpace": {
                 "addressPrefixes": [
-                    "10.0.0.0/16"
+                    "[parameters('address_space')]"
                 ]
             },
             "subnets": [
@@ -118,7 +126,7 @@
         "apiVersion": "2019-11-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
-            "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]",
+            "[resourceId('Microsoft.Network/publicIPAddresses', parameters('ipaddr'))]",
             "[resourceId('Microsoft.Network/virtualNetworks', 'ubuntuVM1-VirtualNetwork')]"
         ],
         "tags": {
@@ -131,7 +139,7 @@
                     "properties": {
                         "privateIPAllocationMethod": "Dynamic",
                         "publicIPAddress": {
-                            "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]"
+                            "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('ipaddr'))]"
                         },
                         "subnet": {
                             "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'ubuntuVM1-VirtualNetwork', 'ubuntuVM1-VirtualNetwork-Subnet')]"
@@ -159,7 +167,7 @@
             "osProfile": {
                 "computerName": "ubuntuVM1",
                 "adminUsername": "adminUsername",
-                "adminPassword": "adminPassword"
+                "adminPassword": "adminPassword1"
             },
             "storageProfile": {
                 "imageReference": {
@@ -184,7 +192,7 @@
             "diagnosticsProfile": {
                 "bootDiagnostics": {
                     "enabled": true,
-                    "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower('ubuntuVM1storage'))).primaryEndpoints.blob]"
+                    "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
                 }
             }
         }

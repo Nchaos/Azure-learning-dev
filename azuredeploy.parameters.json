@@ -3,13 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "ubuntustorage"
+            "value": "ubuntustoragetest"
         },
         "ipaddr": {
             "value": "ubuntuVM1-PublicIP"
         },
         "dnlabel": {
-            "value": "[toLower('ubuntuVM1')]"
+            "value": "ubuntuvm1"
+        },
+        "address_space": {
+            "value": "10.0.0.0/16"
         }
     }
 }
