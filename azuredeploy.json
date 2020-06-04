@@ -25,6 +25,14 @@
             },
             "minLength": 3,
             "maxLength": 24
+        },
+        "address_space": {
+            "type": "string",
+            "metadata": {
+                "description": "Address space for the network"
+            },
+            "minLength": 3,
+            "maxLength": 24
         }
     },
     "functions": [],
@@ -96,7 +104,7 @@
         "properties": {
             "addressSpace": {
                 "addressPrefixes": [
-                    "10.0.0.0/16"
+                    "[parameters('address_space')]"
                 ]
             },
             "subnets": [

@@ -10,6 +10,9 @@
         },
         "dnlabel": {
             "value": "ubuntuvm1"
+        },
+        "address_space": {
+            "value": "10.0.0.0/16"
         }
     }
 }

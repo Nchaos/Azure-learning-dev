@@ -1,0 +1,17 @@
+# Create Variables
+$rg="arm-vscode"
+$location="southcentralus"
+
+# Check if group exists
+$grp_exists= az group exists -n $rg
+If($grp_exists -eq $True) {
+    # Deploy ARM
+    az deployment group create --resource-group $rg --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+}Else{
+    # Create Resource Group & Deploy ARM
+    az group create --name $rg --location $location
+    az deployment group create --resource-group $rg --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+}
+
+# Clean up
+az group delete --name $rg
