@@ -18,7 +18,7 @@
             "value": "10.0.0.0/24"
         },
         "admin_username": {
-            "value": "admin"
+            "value": "adminuser"
         },
         "admin_password": {
             "value": "adminPASS1"
