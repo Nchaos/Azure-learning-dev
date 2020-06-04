@@ -13,6 +13,15 @@
         },
         "address_space": {
             "value": "10.0.0.0/16"
+        },
+        "subnet1": {
+            "value": "10.0.0.0/24"
+        },
+        "admin_username": {
+            "value": "adminuser"
+        },
+        "admin_password": {
+            "value": "adminPASS1"
         }
     }
 }

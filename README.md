@@ -3,7 +3,7 @@ Repo for learning Azure and testing development
 Azuredeploy.azcli contains a script for deploying this Environment
 
 ### Variables (Examples)
-$rg="arm-vscode"
+$rg="arm-vscode" 
 $location="southcentralus"
 
 ### Deployment 
