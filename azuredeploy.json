@@ -31,6 +31,32 @@
             "metadata": {
                 "description": "Address space for the network"
             },
+            "minLength": 10,
+            "maxLength": 24,
+            "defaultValue": "10.0.0.0/16"
+        },
+        "subnet1": {
+            "type": "string",
+            "metadata": {
+                "description": "Address space for subnet 1"
+            },
+            "minLength": 10,
+            "maxLength": 24,
+            "defaultValue": "10.0.0.0/24"
+        },
+        "admin_username": {
+            "type": "string",
+            "metadata": {
+                "description": "Admin username for the virtual machine"
+            },
+            "minLength": 3,
+            "maxLength": 24
+        },
+        "admin_password": {
+            "type": "string",
+            "metadata": {
+                "description": "Password for the Admin user"
+            },
             "minLength": 3,
             "maxLength": 24
         }
@@ -111,7 +137,7 @@
                 {
                     "name": "ubuntuVM1-VirtualNetwork-Subnet",
                     "properties": {
-                        "addressPrefix": "10.0.0.0/24",
+                        "addressPrefix": "[parameters('subnet1')]",
                         "networkSecurityGroup": {
                             "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'ubuntuVM1-nsg')]"
                         }
@@ -166,8 +192,8 @@
             },
             "osProfile": {
                 "computerName": "ubuntuVM1",
-                "adminUsername": "adminUsername",
-                "adminPassword": "adminPassword1"
+                "adminUsername": "[parameters('admin_username')]",
+                "adminPassword": "[parameters('admin_password')]"
             },
             "storageProfile": {
                 "imageReference": {
